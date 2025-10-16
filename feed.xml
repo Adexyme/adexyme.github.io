@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
     <title>GBlog</title>
-    <link href="https://mrkintoye.com.ng/feed.xml" rel="self" />
-    <link href="https://mrkintoye.com.ng" />
+    <link href="https://mrkintoye.name.ng/feed.xml" rel="self" />
+    <link href="https://mrkintoye.name.ng" />
     <updated>2023-09-01T14:04:51+01:00</updated>
     <author>
         <name>Goke Akintoye</name>
     </author>
-    <id>https://mrkintoye.com.ng</id>
+    <id>https://mrkintoye.name.ng</id>
 
     <entry>
         <title>TypeScript&#x27;s Generics In Short</title>
         <author>
             <name>Goke Akintoye</name>
         </author>
-        <link href="https://mrkintoye.com.ng/typescripts-generics-in-short.html"/>
-        <id>https://mrkintoye.com.ng/typescripts-generics-in-short.html</id>
+        <link href="https://mrkintoye.name.ng/typescripts-generics-in-short.html"/>
+        <id>https://mrkintoye.name.ng/typescripts-generics-in-short.html</id>
 
         <updated>2023-09-01T13:35:48+01:00</updated>
             <summary>
@@ -27,7 +27,7 @@
             <![CDATA[
                 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/22/GENERICS2.png" height="283" width="1061" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/22/responsive/GENERICS2-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/22/GENERICS2.png" height="283" width="1061" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/22/responsive/GENERICS2-2xl.webp 1920w">
       
     </figure>
 
@@ -72,8 +72,8 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
         <author>
             <name>Goke Akintoye</name>
         </author>
-        <link href="https://mrkintoye.com.ng/setting-up-auto-linting-and-formatting-for-typescript-in-vs-code.html"/>
-        <id>https://mrkintoye.com.ng/setting-up-auto-linting-and-formatting-for-typescript-in-vs-code.html</id>
+        <link href="https://mrkintoye.name.ng/setting-up-auto-linting-and-formatting-for-typescript-in-vs-code.html"/>
+        <id>https://mrkintoye.name.ng/setting-up-auto-linting-and-formatting-for-typescript-in-vs-code.html</id>
 
         <updated>2023-08-22T17:33:06+01:00</updated>
             <summary>
@@ -85,7 +85,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
             <![CDATA[
                 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/test4b.png" height="769" width="790" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/test4b-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/test4b-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/test4b-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/test4b-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/test4b-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/test4b-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/test4b.png" height="769" width="790" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/test4b-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/test4b-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/test4b-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/test4b-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/test4b-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/test4b-2xl.webp 1920w">
       
     </figure>
 
@@ -211,7 +211,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-17-23-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-23-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-17-23-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-23-xl-2xl.webp 1920w">
       
     </figure>
 
@@ -226,7 +226,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-17-24-2-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-24-2-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-17-24-2-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-24-2-xl-2xl.webp 1920w">
       
     </figure>
 <div><div  style="width:750px; height:auto;display:block;margin-left:auto;margin-right:auto;"  w3-include-html="/ads/adContainers/headerADs4.html"></div>&nbsp;
@@ -241,7 +241,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-17-14-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-14-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-17-14-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-14-xl-2xl.webp 1920w">
       
     </figure>
 
@@ -250,7 +250,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-18-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-18-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-xl-2xl.webp 1920w">
       
     </figure>
 
@@ -261,7 +261,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-18-1-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-18-1-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-18-1-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-18-1-xl-2xl.webp 1920w">
       
     </figure>
 
@@ -284,7 +284,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/20/2023-08-17-26-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/20/responsive/2023-08-17-26-xl-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/20/2023-08-17-26-xl.webp" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/20/responsive/2023-08-17-26-xl-2xl.webp 1920w">
       
     </figure>
 
@@ -309,8 +309,8 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
         <author>
             <name>Goke Akintoye</name>
         </author>
-        <link href="https://mrkintoye.com.ng/a-beginners-guide-to-setting-up-a-typescript-project.html"/>
-        <id>https://mrkintoye.com.ng/a-beginners-guide-to-setting-up-a-typescript-project.html</id>
+        <link href="https://mrkintoye.name.ng/a-beginners-guide-to-setting-up-a-typescript-project.html"/>
+        <id>https://mrkintoye.name.ng/a-beginners-guide-to-setting-up-a-typescript-project.html</id>
             <category term="Webpack"/>
             <category term="VS Code"/>
             <category term="UMD"/>
@@ -333,7 +333,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
             <![CDATA[
                 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/tsLogob-2.png" height="770" width="794" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/tsLogob-2-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/tsLogob-2.png" height="770" width="794" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/tsLogob-2-2xl.webp 1920w">
       
     </figure>
 
@@ -367,7 +367,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-2.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-2-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-2.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-2-2xl.webp 1920w">
       
     </figure>
 
@@ -378,7 +378,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-3.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-3-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-3.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-3-2xl.webp 1920w">
       
     </figure>
 
@@ -400,7 +400,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-4.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-4-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-4.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-4-2xl.webp 1920w">
       
     </figure>
 
@@ -409,7 +409,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-5.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-5-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-5.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-5-2xl.webp 1920w">
       
     </figure>
 
@@ -437,7 +437,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-6.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-6-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-6.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-6-2xl.webp 1920w">
       
     </figure>
 <div><div  style="width:800px; height:auto;display:block;margin-left:auto;margin-right:auto;"  w3-include-html="/ads/adContainers/headerADs2.html"></div>&nbsp;
@@ -463,7 +463,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-15.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-15-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-15.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-15-2xl.webp 1920w">
       
     </figure>
 
@@ -496,7 +496,7 @@ console.log(strings); // Output: ['cherry', 'banana', 'apple']
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-8.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-8-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-8.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-8-2xl.webp 1920w">
       
     </figure>
 <div><div  style="width:800px; height:auto;display:block;margin-left:auto;margin-right:auto;"  w3-include-html="/ads/adContainers/headerADs3.html"></div>&nbsp;
@@ -535,7 +535,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-9.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-9-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-9.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-9-2xl.webp 1920w">
       
     </figure>
 
@@ -565,7 +565,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-10.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-10-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-10.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-10-2xl.webp 1920w">
       
     </figure>
 <div><div  style="width:800px; height:auto;display:block;margin-left:auto;margin-right:auto;"  w3-include-html="/ads/adContainers/headerADs4.html"></div>&nbsp;
@@ -580,7 +580,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-11.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-11-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-11.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-11-2xl.webp 1920w">
       
     </figure>
 
@@ -609,7 +609,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-12.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-12-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-12.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-12-2xl.webp 1920w">
       
     </figure>
 
@@ -624,7 +624,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-13.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-13-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-13.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-13-2xl.webp 1920w">
       
     </figure>
 
@@ -641,7 +641,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-14.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-14-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-14.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-14-2xl.webp 1920w">
       
     </figure>
 
@@ -664,7 +664,7 @@ module.exports = (env, argv) =&gt; {
   </p>
 
     <figure class="post__image post__image--center">
-      <img loading="lazy" src="https://mrkintoye.com.ng/media/posts/1/2023-08-15-18.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-xs.webp 640w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-sm.webp 768w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-md.webp 1024w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-lg.webp 1366w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-xl.webp 1600w ,https://mrkintoye.com.ng/media/posts/1/responsive/2023-08-15-18-2xl.webp 1920w">
+      <img loading="lazy" src="https://mrkintoye.name.ng/media/posts/1/2023-08-15-18.png" height="768" width="1366" alt=""  sizes="(max-width: 1920px) 100vw, 1920px" srcset="https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-xs.webp 640w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-sm.webp 768w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-md.webp 1024w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-lg.webp 1366w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-xl.webp 1600w ,https://mrkintoye.name.ng/media/posts/1/responsive/2023-08-15-18-2xl.webp 1920w">
       
     </figure>
 <div><div  style="width:800px; height:auto;display:block;margin-left:auto;margin-right:auto;"  w3-include-html="/ads/adContainers/headerADs6.html"></div>&nbsp;
