@@ -3,7 +3,7 @@
     <title>GBlog</title>
     <link href="https://mrkintoye.name.ng/feed.xml" rel="self" />
     <link href="https://mrkintoye.name.ng" />
-    <updated>2025-10-17T04:46:30+01:00</updated>
+    <updated>2025-10-17T04:58:00+01:00</updated>
     <author>
         <name>Goke Akintoye</name>
     </author>
@@ -78,7 +78,7 @@
 <p data-start="1647" data-end="1702">A way to <strong data-start="1656" data-end="1665">check</strong> if a token includes a given ability.</p>
 </li>
 </ul>
-<p data-start="1704" data-end="1806">It does <strong data-start="1712" data-end="1719">not</strong> know what <code data-start="1730" data-end="1750">"process-payments"</code> or <code data-start="1754" data-end="1764">"secret"</code> means — those are just labels you invent.</p>
+<p data-start="1704" data-end="1806">It does <strong data-start="1712" data-end="1719">not</strong> know what <code data-start="1730" data-end="1750">"admin-token"</code> or <code data-start="1754" data-end="1764">"cashier-token"</code> means — those are just labels you invent.</p>
 <hr data-start="1808" data-end="1811">
 <h3 data-start="1813" data-end="1827">🧩 Analogy</h3>
 <p data-start="1829" data-end="1915">Imagine each API token as a <strong data-start="1857" data-end="1868">keycard</strong> and each ability as a <strong data-start="1891" data-end="1900">label</strong> printed on it:</p>
@@ -143,7 +143,7 @@
 </tr>
 <tr data-start="2980" data-end="3080">
 <td data-start="2980" data-end="3019" data-col-size="md"><code data-start="2982" data-end="3018">['view-profile', 'update-profile']</code></td>
-<td data-col-size="md" data-start="3019" data-end="3080">These are <strong data-start="3031" data-end="3044">abilities</strong> — you define what they represent.</td>
+<td data-col-size="md" data-start="3019" data-end="3080">These are labels representing <strong data-start="3031" data-end="3044">abilities</strong> — you define what they represent.</td>
 </tr>
 <tr data-start="3081" data-end="3163">
 <td data-start="3081" data-end="3108" data-col-size="md"><code data-start="3083" data-end="3107">$token-&gt;plainTextToken</code></td>
@@ -156,7 +156,7 @@
 <p data-start="3165" data-end="3255">Laravel stores these abilities in the database with the token — it doesn’t interpret them.</p>
 <hr data-start="3257" data-end="3260">
 <h2 data-start="3262" data-end="3315">🔒 4. Checking Abilities in Code (Manual Checking)</h2>
-<p data-start="3317" data-end="3422">To verify that a token has a particular ability before performing an action, use the <code data-start="3402" data-end="3414">tokenCan()</code> method.</p>
+<p data-start="3317" data-end="3422">To verify that a token has a particular ability before allowing an action to be performed, use the <code data-start="3402" data-end="3414">tokenCan()</code> method.</p>
 <div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
 <div class="sticky top-9">
 <div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
