@@ -3,12 +3,199 @@
     <title>GBlog</title>
     <link href="https://mrkintoye.name.ng/feed.xml" rel="self" />
     <link href="https://mrkintoye.name.ng" />
-    <updated>2025-10-17T04:58:00+01:00</updated>
+    <updated>2025-10-17T10:36:46+01:00</updated>
     <author>
         <name>Goke Akintoye</name>
     </author>
     <id>https://mrkintoye.name.ng</id>
 
+    <entry>
+        <title>🖼️ Laravel Views: A Beginner’s Guide</title>
+        <author>
+            <name>Goke Akintoye</name>
+        </author>
+        <link href="https://mrkintoye.name.ng/laravel-views-a-beginners-guide.html"/>
+        <id>https://mrkintoye.name.ng/laravel-views-a-beginners-guide.html</id>
+
+        <updated>2025-10-17T10:36:46+01:00</updated>
+            <summary>
+                <![CDATA[
+                    Laravel is one of the most popular PHP frameworks, and one of the things that makes it great is how it separates logic (what your app does) from presentation (what&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p data-start="160" data-end="373">Laravel is one of the most popular PHP frameworks, and one of the things that makes it great is how it separates logic (what your app does) from presentation (what your users see). This is where <strong data-start="355" data-end="364">Views</strong> come in.</p>
+<p data-start="375" data-end="498">In this article, we’ll explain <strong data-start="406" data-end="435">what Views are in Laravel</strong>, why they’re useful, and how to use them with simple examples.</p>
+<hr data-start="500" data-end="503">
+<h2 data-start="505" data-end="526">🤔 What is a View?</h2>
+<p data-start="528" data-end="737">A <strong data-start="530" data-end="538">View</strong> in Laravel is simply a file that contains <strong data-start="581" data-end="589">HTML</strong> (and sometimes a bit of PHP) to display content to the user. Think of it like the <strong data-start="672" data-end="685">front-end</strong> of your application — the part people actually see.</p>
+<p data-start="739" data-end="801">Laravel stores its view files in the <code data-start="776" data-end="793">resources/views</code> folder.</p>
+<hr data-start="803" data-end="806">
+<h2 data-start="808" data-end="837">📁 Where Are Views Stored?</h2>
+<p data-start="839" data-end="887">By default, all your view files are stored here:</p>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!">resources/views/
+</code></div>
+</div>
+<p data-start="915" data-end="1015">Each view is usually a <code data-start="938" data-end="950">.blade.php</code> file, because Laravel uses a templating engine called <strong data-start="1005" data-end="1014">Blade</strong>.</p>
+<p data-start="1017" data-end="1029">For example:</p>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code class="whitespace-pre!">resources/views/welcome.blade.php
+</code></div>
+</div>
+<hr data-start="1073" data-end="1076">
+<h2 data-start="1078" data-end="1106">📄 Creating a Simple View</h2>
+<p data-start="1108" data-end="1169">Let’s say you want to create a page called "hello.blade.php".</p>
+<ol data-start="1171" data-end="1257">
+<li data-start="1171" data-end="1198">
+<p data-start="1174" data-end="1198">Go to <code data-start="1180" data-end="1198">resources/views/</code></p>
+</li>
+<li data-start="1199" data-end="1239">
+<p data-start="1202" data-end="1239">Create a file named <code data-start="1222" data-end="1239">hello.blade.php</code></p>
+</li>
+<li data-start="1240" data-end="1257">
+<p data-start="1243" data-end="1257">Add some HTML:</p>
+</li>
+</ol>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>&lt;!-- resources/views/hello.blade.php --&gt;<br>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;Hello Page&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;h1&gt;Hello, Laravel!&lt;/h1&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></div>
+</div>
+<hr data-start="1433" data-end="1436">
+<h2 data-start="1438" data-end="1473">🚀 Returning a View from a Route</h2>
+<p data-start="1475" data-end="1532">Now that you have a view, how do you show it in your app?</p>
+<p data-start="1534" data-end="1578">Open the <code data-start="1543" data-end="1559">routes/web.php</code> file and add this:</p>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div dir="ltr"> </div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>Route::get('/hello', function () {<br>    return view('hello');<br>});<br></code></div>
+</div>
+<p data-start="1657" data-end="1789">Notice that we use <code data-start="1676" data-end="1691">view('hello')</code> — Laravel automatically looks for a file named <code data-start="1739" data-end="1756">hello.blade.php</code> in the <code data-start="1764" data-end="1781">resources/views</code> folder.</p>
+<hr data-start="1791" data-end="1794">
+<h2 data-start="1796" data-end="1824">🧠 Passing Data to a View</h2>
+<p data-start="1826" data-end="1890">You can also pass data from your route to your view. Here's how:</p>
+<h3 data-start="1892" data-end="1921">Step 1: Update your route</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>Route::get('/greet', function () {<br>    $name = 'John';<br>    return view('greet', ['name' =&gt; $name]);<br>});<br></code></div>
+</div>
+<h3 data-start="2038" data-end="2083">Step 2: Create the <code data-start="2061" data-end="2078">greet.blade.php</code> file</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>&lt;!-- resources/views/greet.blade.php --&gt;<br>&lt;h1&gt;Hello, {{ $name }}!&lt;/h1&gt;<br></code></div>
+</div>
+<p data-start="2167" data-end="2232">Now, when you visit <code data-start="2187" data-end="2195">/greet</code>, it will display:<br data-start="2213" data-end="2216"><strong data-start="2216" data-end="2232">Hello, John!</strong></p>
+<hr data-start="2234" data-end="2237">
+<h2 data-start="2239" data-end="2283">🧩 Blade Templating: Making Views Dynamic</h2>
+<p data-start="2285" data-end="2344">Blade lets you use simple, readable syntax for things like:</p>
+<h3 data-start="2346" data-end="2363">Echoing data:</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>{{ $name }}<br></code></div>
+</div>
+<h3 data-start="2390" data-end="2408">If statements:</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>@if($name == 'John')<br>    &lt;p&gt;Welcome back, John!&lt;/p&gt;<br>@else<br>    &lt;p&gt;Hello, stranger!&lt;/p&gt;<br>@endif<br></code></div>
+</div>
+<h3 data-start="2516" data-end="2526">Loops:</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>@foreach($users as $user)<br>    &lt;p&gt;{{ $user }}&lt;/p&gt;<br>@endforeach<br></code></div>
+</div>
+<hr data-start="2602" data-end="2605">
+<h2 data-start="2607" data-end="2654">🧱 View Layouts with <code data-start="2631" data-end="2639">@yield</code> and <code data-start="2644" data-end="2654">@section</code></h2>
+<p data-start="2656" data-end="2755">If you have a website with a consistent layout (like a navbar and footer), you can use <strong data-start="2743" data-end="2754">layouts</strong>.</p>
+<h3 data-start="2757" data-end="2785">1. Create a layout file:</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>&lt;!-- resources/views/layouts/main.blade.php --&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;@yield('title')&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;div class="content"&gt;<br>        @yield('content')<br>    &lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></div>
+</div>
+<h3 data-start="2991" data-end="3033">2. Create a view that uses the layout:</h3>
+<div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary">
+<div class="sticky top-9">
+<div class="absolute end-0 bottom-0 flex h-9 items-center pe-2">
+<div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div>
+</div>
+</div>
+<div class="overflow-y-auto p-4" dir="ltr"><code>&lt;!-- resources/views/about.blade.php --&gt;<br>@extends('layouts.main')<br><br>@section('title', 'About Page')<br><br>@section('content')<br>    &lt;h1&gt;About Us&lt;/h1&gt;<br>    &lt;p&gt;This is the about page.&lt;/p&gt;<br>@endsection<br></code></div>
+</div>
+<p data-start="3237" data-end="3287">This makes your code cleaner and easier to manage.</p>
+<hr data-start="3289" data-end="3292">
+<h2 data-start="3294" data-end="3307">🧼 Summary</h2>
+<ul data-start="3309" data-end="3573">
+<li data-start="3309" data-end="3351">
+<p data-start="3311" data-end="3351">Views are used to display HTML to users.</p>
+</li>
+<li data-start="3352" data-end="3382">
+<p data-start="3354" data-end="3382">Stored in <code data-start="3364" data-end="3381">resources/views</code>.</p>
+</li>
+<li data-start="3383" data-end="3438">
+<p data-start="3385" data-end="3438">Use the <code data-start="3393" data-end="3401">view()</code> function to return them from routes.</p>
+</li>
+<li data-start="3439" data-end="3515">
+<p data-start="3441" data-end="3515">Use Blade syntax (<code data-start="3459" data-end="3466">{{ }}</code>, <code data-start="3468" data-end="3473">@if</code>, <code data-start="3475" data-end="3485">@foreach</code>, etc.) for cleaner templates.</p>
+</li>
+<li data-start="3516" data-end="3573">
+<p data-start="3518" data-end="3573">Layouts help you reuse the same structure across pages.</p>
+</li>
+</ul>
+<hr data-start="3575" data-end="3578">
+<h2 data-start="3580" data-end="3594">✅ Final Tip</h2>
+<p data-start="3596" data-end="3649">Whenever you’re working with Laravel Views, remember:</p>
+<ul data-start="3650" data-end="3751">
+<li data-start="3650" data-end="3683">
+<p data-start="3652" data-end="3683">Keep your logic in controllers,</p>
+</li>
+<li data-start="3684" data-end="3710">
+<p data-start="3686" data-end="3710">Keep your HTML in views,</p>
+</li>
+<li data-start="3711" data-end="3751">
+<p data-start="3713" data-end="3751">And keep your app clean and organized!</p>
+</li>
+</ul>
+<p data-start="3753" data-end="3832">Laravel views + Blade templating make building websites fast, elegant, and fun.</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>🧠 Understanding Token Abilities and Token Ability Checks in Laravel Sanctum</title>
         <author>
