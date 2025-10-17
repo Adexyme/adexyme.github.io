@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>🧠 Understanding Token Abilities and Token Ability Checks in Laravel Sanctum - GBlog</title><meta name="description" content="Laravel Sanctum allows your application to issue API tokens for authentication. Each token can have a set of abilities, which act like permissions — they define what that token is&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="stylesheet" href="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/prism-black.css"><link rel="canonical" href="https://mrkintoye.name.ng/understanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html"><link rel="alternate" type="application/atom+xml" href="https://mrkintoye.name.ng/feed.xml" title="GBlog - RSS"><link rel="alternate" type="application/json" href="https://mrkintoye.name.ng/feed.json" title="GBlog - JSON"><meta property="og:title" content="🧠 Understanding Token Abilities and Token Ability Checks in Laravel Sanctum"><meta property="og:image" content="https://mrkintoye.name.ng/media/website/myPic2.webp"><meta property="og:image:width" content="960"><meta property="og:image:height" content="960"><meta property="og:site_name" content="GBlog"><meta property="og:description" content="Laravel Sanctum allows your application to issue API tokens for authentication. Each token can have a set of abilities, which act like permissions — they define what that token is&hellip;"><meta property="og:url" content="https://mrkintoye.name.ng/understanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://mrkintoye.name.ng/assets/css/style.css?v=2feeb120d926f3c4d25275973487dfeb"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://mrkintoye.name.ng/understanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html"},"headline":"🧠 Understanding Token Abilities and Token Ability Checks in Laravel Sanctum","datePublished":"2025-10-17T04:46+01:00","dateModified":"2025-10-17T04:46+01:00","image":{"@type":"ImageObject","url":"https://mrkintoye.name.ng/media/website/myPic2.webp","height":960,"width":960},"description":"Laravel Sanctum allows your application to issue API tokens for authentication. Each token can have a set of abilities, which act like permissions — they define what that token is&hellip;","author":{"@type":"Person","name":"Goke Akintoye","url":"https://mrkintoye.name.ng/authors/goke-akintoye/"},"publisher":{"@type":"Organization","name":"Goke Akintoye","logo":{"@type":"ImageObject","url":"https://mrkintoye.name.ng/media/website/myPic2.webp","height":960,"width":960}}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript><script type="text/javascript">(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "im5h8xvq81");</script><link rel="stylesheet" href="/assets/css/vendor/w3.css"><script src="/assets/js/vendor/w3.js"></script></head><body class="post-template"><div class="adexy-text-wrap-container" style="background-color:grey;padding:20px;" onclick="location.href = 'https://www.amazon.com/API-Development-Laravel-Quick-Start/dp/B0F62BCT1G/ref=sr_1_1?dib=eyJ2IjoiMSJ9.9yN0sJGFMASeMnoOJ9z1BA.Q1eYmtOuoaRSW8sbl7_Dzl9j5zl2vP3cFKEcntMy1-Y&dib_tag=se&keywords=9798868815751&linkCode=qs&qid=1751887578&s=books&sr=1-1'"><img src="https://mrkintoye.name.ng/media/files/API_Laravel.webp" alt="Descriptive alt text" class="adexy-wrapped-image"><p class="adexy-wrapped-text">🚀 <b>It’s here!</b><br>After months of writing and testing real-world examples, I’m excited to announce my new book — <b>API Development with Laravel: A Quick Start Guide</b> 🎉<br>This project-based book introduces you to Laravel, even if you’re completely new to it — and show you how to build a real Payment Processor API step by step.</p></div><header class="top js-header"><a class="logo" href="https://mrkintoye.name.ng/"><img src="https://mrkintoye.name.ng/media/website/myPic2.webp" alt="GBlog" width="960" height="960"></a></header><main class="post"><article class="content"><div class="hero hero--noimage"><header class="hero__content"><div class="wrapper"><h1>🧠 Understanding Token Abilities and Token Ability Checks in Laravel Sanctum</h1><div class="feed__meta content__meta"><a href="https://mrkintoye.name.ng/authors/goke-akintoye/" class="feed__author">Goke Akintoye</a> <time datetime="2025-10-17T04:46" class="feed__date">October 17, 2025</time></div></div></header></div><div class="entry-wrapper content__entry"><p data-start="353" data-end="561">Laravel Sanctum allows your application to issue <strong data-start="402" data-end="416">API tokens</strong> for authentication.<br data-start="436" data-end="439">Each token can have a set of <strong data-start="468" data-end="481">abilities</strong>, which act like <em data-start="498" data-end="511">permissions</em> — they define what that token is allowed to do.</p><p data-start="563" data-end="698">Let’s explore what token abilities are, how they work, who defines them, and how you can use them to protect routes and control access.</p><hr data-start="700" data-end="703"><h2 data-start="705" data-end="739">🧩 1. What Are Token Abilities?</h2><p data-start="741" data-end="844">A <strong data-start="743" data-end="760">token ability</strong> is a label (or tag) that specifies what actions a particular API token can perform.</p><p data-start="846" data-end="954">Think of an ability like a <strong data-start="873" data-end="895">key’s access level</strong> — it tells the system what doors the key (token) can open.</p><h3 data-start="956" data-end="978">🔍 Example Concept</h3><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="980" data-end="1312"><thead data-start="980" data-end="1033"><tr data-start="980" data-end="1033"><th data-start="980" data-end="993" data-col-size="sm">Token Name</th><th data-start="993" data-end="1005" data-col-size="sm">Abilities</th><th data-start="1005" data-end="1033" data-col-size="sm">Meaning (defined by you)</th></tr></thead><tbody data-start="1091" data-end="1312"><tr data-start="1091" data-end="1171"><td data-start="1091" data-end="1107" data-col-size="sm"><code data-start="1093" data-end="1106">admin-token</code></td><td data-start="1107" data-end="1142" data-col-size="sm"><code data-start="1109" data-end="1141">["view-users", "delete-users"]</code></td><td data-start="1142" data-end="1171" data-col-size="sm">Can view and delete users</td></tr><tr data-start="1172" data-end="1244"><td data-start="1172" data-end="1190" data-col-size="sm"><code data-start="1174" data-end="1189">cashier-token</code></td><td data-col-size="sm" data-start="1190" data-end="1215"><code data-start="1192" data-end="1214">["process-payments"]</code></td><td data-col-size="sm" data-start="1215" data-end="1244">Can process payments only</td></tr><tr data-start="1245" data-end="1312"><td data-start="1245" data-end="1265" data-col-size="sm"><code data-start="1247" data-end="1264">read-only-token</code></td><td data-col-size="sm" data-start="1265" data-end="1283"><code data-start="1267" data-end="1282">["view-data"]</code></td><td data-col-size="sm" data-start="1283" data-end="1312">Can only read information</td></tr></tbody></table></div></div><hr data-start="1314" data-end="1317"><h2 data-start="1319" data-end="1363">🧠 2. Who Determines What Abilities Mean?</h2><p data-start="1365" data-end="1481">This is <strong data-start="1373" data-end="1384">crucial</strong> to understand:<br data-start="1399" data-end="1402">Laravel does <strong data-start="1415" data-end="1422">not</strong> come with any built-in abilities or predefined meanings.</p><p data-start="1483" data-end="1491">Instead:</p><blockquote data-start="1493" data-end="1578"><p data-start="1495" data-end="1578">🔑 <strong data-start="1498" data-end="1578">You, the developer, define both the names and the meanings of the abilities.</strong></p></blockquote><p data-start="1580" data-end="1602">Laravel only provides:</p><ul data-start="1603" data-end="1702"><li data-start="1603" data-end="1644"><p data-start="1605" data-end="1644">A way to <strong data-start="1614" data-end="1623">store</strong> abilities on tokens.</p></li><li data-start="1645" data-end="1702"><p data-start="1647" data-end="1702">A way to <strong data-start="1656" data-end="1665">check</strong> if a token includes a given ability.</p></li></ul><p data-start="1704" data-end="1806">It does <strong data-start="1712" data-end="1719">not</strong> know what <code data-start="1730" data-end="1750">"process-payments"</code> or <code data-start="1754" data-end="1764">"secret"</code> means — those are just labels you invent.</p><hr data-start="1808" data-end="1811"><h3 data-start="1813" data-end="1827">🧩 Analogy</h3><p data-start="1829" data-end="1915">Imagine each API token as a <strong data-start="1857" data-end="1868">keycard</strong> and each ability as a <strong data-start="1891" data-end="1900">label</strong> printed on it:</p><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="1917" data-end="2111"><thead data-start="1917" data-end="1949"><tr data-start="1917" data-end="1949"><th data-start="1917" data-end="1927" data-col-size="sm">Keycard</th><th data-start="1927" data-end="1949" data-col-size="md">Labels (Abilities)</th></tr></thead><tbody data-start="1984" data-end="2111"><tr data-start="1984" data-end="2035"><td data-start="1984" data-end="1997" data-col-size="sm">Staff Card</td><td data-start="1997" data-end="2035" data-col-size="md">“cafeteria-access”, “office-entry”</td></tr><tr data-start="2036" data-end="2111"><td data-start="2036" data-end="2051" data-col-size="sm">Manager Card</td><td data-start="2051" data-end="2111" data-col-size="md">“cafeteria-access”, “office-entry”, “server-room-access”</td></tr></tbody></table></div></div><p data-start="2113" data-end="2184">When someone tries to open the <strong data-start="2144" data-end="2159">server room</strong>, the system just checks:</p><blockquote data-start="2185" data-end="2243"><p data-start="2187" data-end="2243">“Does this keycard have the ‘server-room-access’ label?”</p></blockquote><p data-start="2245" data-end="2312">It doesn’t know what a “server room” is — you defined that meaning.</p><hr data-start="2314" data-end="2317"><h2 data-start="2319" data-end="2358">⚙️ 3. Creating Tokens With Abilities</h2><p data-start="2360" data-end="2424">When you issue a token, you can attach specific abilities to it.</p><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>// Example: In your AuthController</code><br><code>$user = User::find(1);</code><br><br><code>// Create a token that can only view and update profile data</code><br><code>$token = $user-&gt;createToken('profile-token', ['view-profile', 'update-profile']);</code><br><br><code>// Return the token string to the client</code><br><code>return ['token' =&gt; $token-&gt;plainTextToken];</code><strong><br></strong><strong><code class="whitespace-pre! language-php"></code></strong></div></div><hr data-start="2726" data-end="2729"><h3 data-start="2731" data-end="2762">🧠 Line-by-Line Explanation</h3><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="2764" data-end="3163"><thead data-start="2764" data-end="2786"><tr data-start="2764" data-end="2786"><th data-start="2764" data-end="2771" data-col-size="md">Code</th><th data-start="2771" data-end="2786" data-col-size="md">Explanation</th></tr></thead><tbody data-start="2811" data-end="3163"><tr data-start="2811" data-end="2868"><td data-start="2811" data-end="2838" data-col-size="md"><code data-start="2813" data-end="2837">$user = User::find(1);</code></td><td data-start="2838" data-end="2868" data-col-size="md">Get a user model instance.</td></tr><tr data-start="2869" data-end="2979"><td data-start="2869" data-end="2916" data-col-size="md"><code data-start="2871" data-end="2915">$user-&gt;createToken('profile-token', [...])</code></td><td data-start="2916" data-end="2979" data-col-size="md">Create a new personal access token named <code data-start="2959" data-end="2976">'profile-token'</code>.</td></tr><tr data-start="2980" data-end="3080"><td data-start="2980" data-end="3019" data-col-size="md"><code data-start="2982" data-end="3018">['view-profile', 'update-profile']</code></td><td data-col-size="md" data-start="3019" data-end="3080">These are <strong data-start="3031" data-end="3044">abilities</strong> — you define what they represent.</td></tr><tr data-start="3081" data-end="3163"><td data-start="3081" data-end="3108" data-col-size="md"><code data-start="3083" data-end="3107">$token-&gt;plainTextToken</code></td><td data-start="3108" data-end="3163" data-col-size="md">The actual token string to be used in API requests.</td></tr></tbody></table></div></div><p data-start="3165" data-end="3255">Laravel stores these abilities in the database with the token — it doesn’t interpret them.</p><hr data-start="3257" data-end="3260"><h2 data-start="3262" data-end="3315">🔒 4. Checking Abilities in Code (Manual Checking)</h2><p data-start="3317" data-end="3422">To verify that a token has a particular ability before performing an action, use the <code data-start="3402" data-end="3414">tokenCan()</code> method.</p><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>use Illuminate\Http\Request;</code><br><br><code>public function updateProfile(Request $request)</code><br><code>{</code><br><code>    if (! $request-&gt;user()-&gt;tokenCan('update-profile')) {</code><br><code>        abort(403, 'Unauthorized action.');</code><br><code>    }</code><br><br><code>    // Perform profile update logic...</code><br><code>}</code></div></div><hr data-start="3666" data-end="3669"><h3 data-start="3671" data-end="3699">🧠 What’s Happening Here</h3><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="3701" data-end="4028"><thead data-start="3701" data-end="3719"><tr data-start="3701" data-end="3719"><th data-start="3701" data-end="3708" data-col-size="sm">Line</th><th data-start="3708" data-end="3719" data-col-size="md">Meaning</th></tr></thead><tbody data-start="3740" data-end="4028"><tr data-start="3740" data-end="3793"><td data-start="3740" data-end="3761" data-col-size="sm"><code data-start="3742" data-end="3760">$request-&gt;user()</code></td><td data-start="3761" data-end="3793" data-col-size="md">Gets the authenticated user.</td></tr><tr data-start="3794" data-end="3910"><td data-start="3794" data-end="3825" data-col-size="sm"><code data-start="3796" data-end="3824">tokenCan('update-profile')</code></td><td data-start="3825" data-end="3910" data-col-size="md">Checks if the <strong data-start="3841" data-end="3850">token</strong> used for authentication has the <code data-start="3883" data-end="3901">"update-profile"</code> label.</td></tr><tr data-start="3911" data-end="4028"><td data-start="3911" data-end="3950" data-col-size="sm"><code data-start="3913" data-end="3949">abort(403, 'Unauthorized action.')</code></td><td data-start="3950" data-end="4028" data-col-size="md">If the token doesn’t have the ability, return an HTTP 403 Forbidden error.</td></tr></tbody></table></div></div><p data-start="4030" data-end="4142">Laravel simply checks if the string <code data-start="4066" data-end="4084">'update-profile'</code> exists among the token’s stored abilities — nothing more.</p><hr data-start="4144" data-end="4147"><h2 data-start="4149" data-end="4205">🚦 5. Protecting Routes Automatically with Middleware</h2><p data-start="4207" data-end="4336">Manual checks work fine for individual methods, but for groups of routes, Laravel Sanctum provides two convenient <strong data-start="4321" data-end="4335">middleware</strong>:</p><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="4338" data-end="4545"><thead data-start="4338" data-end="4363"><tr data-start="4338" data-end="4363"><th data-start="4338" data-end="4351" data-col-size="sm">Middleware</th><th data-start="4351" data-end="4363" data-col-size="md">Behavior</th></tr></thead><tbody data-start="4392" data-end="4545"><tr data-start="4392" data-end="4461"><td data-start="4392" data-end="4406" data-col-size="sm"><code data-start="4394" data-end="4405">abilities</code></td><td data-start="4406" data-end="4461" data-col-size="md">Requires the token to have <strong data-start="4435" data-end="4442">all</strong> listed abilities</td></tr><tr data-start="4462" data-end="4545"><td data-start="4462" data-end="4474" data-col-size="sm"><code data-start="4464" data-end="4473">ability</code></td><td data-start="4474" data-end="4545" data-col-size="md">Requires the token to have <strong data-start="4503" data-end="4519">at least one</strong> of the listed abilities</td></tr></tbody></table></div></div><hr data-start="4547" data-end="4550"><h3 data-start="4552" data-end="4590">🛠 Step 1: Register the Middleware</h3><h4 data-start="4592" data-end="4650">Laravel 10 and earlier → add to <code data-start="4629" data-end="4650">app/Http/Kernel.php</code></h4><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>use Laravel\Sanctum\Http\Middleware\CheckAbilities;</code><br><code>use Laravel\Sanctum\Http\Middleware\CheckForAnyAbility;</code><br><br><code>protected $routeMiddleware = [</code><br><code>    // other middleware...</code><br><code>    'abilities' =&gt; CheckAbilities::class,</code><br><code>    'ability' =&gt; CheckForAnyAbility::class,</code><br><code>];</code></div></div><h4 data-start="4920" data-end="4974">Laravel 11 and later → add to <code data-start="4955" data-end="4974">bootstrap/app.php</code></h4><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>use Laravel\Sanctum\Http\Middleware\CheckAbilities;</code><br><code>use Laravel\Sanctum\Http\Middleware\CheckForAnyAbility;</code><br><code>use Illuminate\Foundation\Configuration\Middleware;</code><br><br><code>$app-&gt;withMiddleware(function (Middleware $middleware) {</code><br><code>    $middleware-&gt;alias([</code><br><code>        'abilities' =&gt; CheckAbilities::class,</code><br><code>        'ability' =&gt; CheckForAnyAbility::class,</code><br><code>    ]);</code><br><code>});</code></div></div><p data-start="5337" data-end="5425">This step “teaches” Laravel to recognize the middleware names <code data-start="5399" data-end="5410">abilities</code> and <code data-start="5415" data-end="5424">ability</code>.</p><hr data-start="5427" data-end="5430"><h3 data-start="5432" data-end="5473">🛠 Step 2: Apply Middleware to Routes</h3><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>use App\Http\Controllers\TransactionController;</code><br><code>use App\Http\Controllers\WalletController;</code><br><code>use Illuminate\Support\Facades\Route;</code><br><br><code>Route::middleware(['auth:sanctum', 'abilities:secret'])-&gt;group(function () {</code><br><code>    Route::post('/wallet/withdraw', [WalletController::class, 'withdrawFund']);</code><br><code>    Route::post('/payment/initiate', [TransactionController::class, 'initTransaction']);</code><br><code>    Route::get('/transaction/verify/{id}', [TransactionController::class, 'verifyTransaction']);</code><br><code>});</code></div></div><hr data-start="5964" data-end="5967"><h3 data-start="5969" data-end="5987">🧠 Explanation</h3><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="5989" data-end="6254"><thead data-start="5989" data-end="6007"><tr data-start="5989" data-end="6007"><th data-start="5989" data-end="5996" data-col-size="sm">Code</th><th data-start="5996" data-end="6007" data-col-size="md">Meaning</th></tr></thead><tbody data-start="6028" data-end="6254"><tr data-start="6028" data-end="6096"><td data-start="6028" data-end="6045" data-col-size="sm"><code data-start="6030" data-end="6044">auth:sanctum</code></td><td data-col-size="md" data-start="6045" data-end="6096">Ensures the request uses a valid Sanctum token.</td></tr><tr data-start="6097" data-end="6172"><td data-start="6097" data-end="6118" data-col-size="sm"><code data-start="6099" data-end="6117">abilities:secret</code></td><td data-start="6118" data-end="6172" data-col-size="md">Ensures the token includes the <code data-start="6151" data-end="6161">"secret"</code> ability.</td></tr><tr data-start="6173" data-end="6254"><td data-start="6173" data-end="6191" data-col-size="sm">Grouping routes</td><td data-start="6191" data-end="6254" data-col-size="md">All routes inside share the same restriction automatically.</td></tr></tbody></table></div></div><p data-start="6256" data-end="6342">Laravel doesn’t interpret <code data-start="6282" data-end="6292">"secret"</code> — it simply checks if the token <em data-start="6325" data-end="6330">has</em> that label.</p><hr data-start="6344" data-end="6347"><h3 data-start="6349" data-end="6394">Example Using <code data-start="6367" data-end="6376">ability</code> (any one of them)</h3><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>Route::middleware(['auth:sanctum', 'ability:view-transactions,verify-transactions'])-&gt;group(function () {<br>    Route::get('/transaction/{id}', [TransactionController::class, 'getTransaction']);<br>});<br></code></div></div><p data-start="6605" data-end="6717">This route will be accessible to any token that has <strong data-start="6657" data-end="6667">either</strong> <code data-start="6668" data-end="6689">"view-transactions"</code> or <code data-start="6693" data-end="6716">"verify-transactions"</code>.</p><hr data-start="6719" data-end="6722"><h2 data-start="6724" data-end="6750">🧾 6. Full Example Flow</h2><h3 data-start="6752" data-end="6798">Step 1 — Create Tokens for Different Roles</h3><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>// Admin user</code><br><code>$adminToken = $user-&gt;createToken('admin', ['manage-users', 'process-payments']);</code><br><br><code>// Customer user</code><br><code>$userToken = $user-&gt;createToken('customer', ['view-transactions']);</code></div></div><hr data-start="6993" data-end="6996"><h3 data-start="6998" data-end="7025">Step 2 — Protect Routes</h3><div class="contain-inline-size rounded-2xl relative bg-token-sidebar-surface-primary"><div class="sticky top-9"><div class="absolute end-0 bottom-0 flex h-9 items-center pe-2"><div class="bg-token-bg-elevated-secondary text-token-text-secondary flex items-center gap-4 rounded-sm px-2 font-sans text-xs"> </div></div></div><div class="overflow-y-auto p-4" dir="ltr"><code>Route::middleware(['auth:sanctum', 'abilities:process-payments'])-&gt;group(function () {<br>    Route::post('/payments', [PaymentController::class, 'process']);<br>});<br></code></div></div><p data-start="7199" data-end="7333">✅ The <strong data-start="7205" data-end="7220">admin token</strong> (has <code data-start="7226" data-end="7244">process-payments</code>) → can access<br data-start="7258" data-end="7261">❌ The <strong data-start="7267" data-end="7285">customer token</strong> (no <code data-start="7290" data-end="7308">process-payments</code>) → gets 403 Unauthorized</p><hr data-start="7335" data-end="7338"><h2 data-start="7340" data-end="7374">⚡ 7. Why Token Abilities Matter</h2><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="7376" data-end="7723"><thead data-start="7376" data-end="7396"><tr data-start="7376" data-end="7396"><th data-start="7376" data-end="7385" data-col-size="sm">Reason</th><th data-start="7385" data-end="7396" data-col-size="md">Benefit</th></tr></thead><tbody data-start="7419" data-end="7723"><tr data-start="7419" data-end="7495"><td data-start="7419" data-end="7449" data-col-size="sm"><strong data-start="7421" data-end="7448">Granular access control</strong></td><td data-col-size="md" data-start="7449" data-end="7495">You can allow or block tokens per feature.</td></tr><tr data-start="7496" data-end="7566"><td data-start="7496" data-end="7511" data-col-size="sm"><strong data-start="7498" data-end="7510">Security</strong></td><td data-start="7511" data-end="7566" data-col-size="md">If a token is compromised, its actions are limited.</td></tr><tr data-start="7567" data-end="7629"><td data-start="7567" data-end="7585" data-col-size="sm"><strong data-start="7569" data-end="7584">Scalability</strong></td><td data-start="7585" data-end="7629" data-col-size="md">Easy to add or change permissions later.</td></tr><tr data-start="7630" data-end="7723"><td data-start="7630" data-end="7650" data-col-size="sm"><strong data-start="7632" data-end="7649">Best practice</strong></td><td data-col-size="md" data-start="7650" data-end="7723">Follows the “principle of least privilege” (give only what’s needed).</td></tr></tbody></table></div></div><hr data-start="7725" data-end="7728"><h2 data-start="7730" data-end="7742">✅ Summary</h2><div class="_tableContainer_1rjym_1"><div class="group _tableWrapper_1rjym_13 flex w-fit flex-col-reverse" tabindex="-1"><table class="w-fit min-w-(--thread-content-width)" data-start="7744" data-end="8324"><thead data-start="7744" data-end="7769"><tr data-start="7744" data-end="7769"><th data-start="7744" data-end="7754" data-col-size="sm">Concept</th><th data-start="7754" data-end="7769" data-col-size="md">Description</th></tr></thead><tbody data-start="7798" data-end="8324"><tr data-start="7798" data-end="7889"><td data-start="7798" data-end="7820" data-col-size="sm"><strong data-start="7800" data-end="7819">Token Abilities</strong></td><td data-col-size="md" data-start="7820" data-end="7889">Labels (strings) that define what a token can do — chosen by you.</td></tr><tr data-start="7890" data-end="7983"><td data-start="7890" data-end="7919" data-col-size="sm"><strong data-start="7892" data-end="7918">Who defines abilities?</strong></td><td data-start="7919" data-end="7983" data-col-size="md">You do — Laravel doesn’t interpret or enforce their meaning.</td></tr><tr data-start="7984" data-end="8070"><td data-start="7984" data-end="8003" data-col-size="sm"><strong data-start="7986" data-end="8002"><code data-start="7988" data-end="8000">tokenCan()</code></strong></td><td data-start="8003" data-end="8070" data-col-size="md">Checks if a token has a specific ability (used in controllers).</td></tr><tr data-start="8071" data-end="8153"><td data-start="8071" data-end="8101" data-col-size="sm"><strong data-start="8073" data-end="8100"><code data-start="8075" data-end="8087">abilities:</code> middleware</strong></td><td data-col-size="md" data-start="8101" data-end="8153">Requires a token to have <em data-start="8128" data-end="8133">all</em> listed abilities.</td></tr><tr data-start="8154" data-end="8241"><td data-start="8154" data-end="8182" data-col-size="sm"><strong data-start="8156" data-end="8181"><code data-start="8158" data-end="8168">ability:</code> middleware</strong></td><td data-start="8182" data-end="8241" data-col-size="md">Requires a token to have <em data-start="8209" data-end="8223">at least one</em> listed ability.</td></tr><tr data-start="8242" data-end="8324"><td data-start="8242" data-end="8256" data-col-size="sm"><strong data-start="8244" data-end="8255">Purpose</strong></td><td data-col-size="md" data-start="8256" data-end="8324">Restrict what tokens can do, improving security and flexibility.</td></tr></tbody></table></div></div><hr data-start="8326" data-end="8329"><h3 data-start="8331" data-end="8353">🔐 In One Sentence</h3><blockquote data-start="8355" data-end="8544"><p data-start="8357" data-end="8544"><strong data-start="8357" data-end="8544">Laravel Sanctum token abilities are developer-defined permission tags attached to tokens, checked by Laravel using simple string comparison to decide what each token is allowed to do.</strong></p></blockquote></div><footer class="content__footer"><div class="entry-wrapper"><p class="content__updated">This article was updated on October 17, 2025</p><div class="content__actions"><div class="content__share"><button class="btn--icon content__share-button js-content__share-button"><svg width="20" height="20" aria-hidden="true"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#share"></use></svg> <span>Share It</span></button><div class="content__share-popup js-content__share-popup"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" class="js-share facebook" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#facebook"/></svg> <span>Facebook</span> </a><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html&amp;via=GBlog&amp;text=%F0%9F%A7%A0%20Understanding%20Token%20Abilities%20and%20Token%20Ability%20Checks%20in%20Laravel%20Sanctum" class="js-share twitter" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#twitter"/></svg> <span>Twitter</span> </a><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html&amp;media=undefined&amp;description=%F0%9F%A7%A0%20Understanding%20Token%20Abilities%20and%20Token%20Ability%20Checks%20in%20Laravel%20Sanctum" class="js-share pinterest" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#pinterest"/></svg> <span>Pinterest</span> </a><a href="https://mix.com/add?url=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" class="js-share mix" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#mix"/></svg> <span>Mix</span> </a><a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span> </a><a href="https://buffer.com/add?text=%F0%9F%A7%A0%20Understanding%20Token%20Abilities%20and%20Token%20Ability%20Checks%20in%20Laravel%20Sanctum&amp;url=https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" class="js-share buffer" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#buffer"/></svg> <span>Buffer</span> </a><a href="https://api.whatsapp.com/send?text=%F0%9F%A7%A0%20Understanding%20Token%20Abilities%20and%20Token%20Ability%20Checks%20in%20Laravel%20Sanctum https%3A%2F%2Fmrkintoye.name.ng%2Funderstanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#whatsapp"/></svg> <span>WhatsApp</span></a></div></div></div><div class="content__bio bio"><div><h3 class="h4 bio__name"><a href="https://mrkintoye.name.ng/authors/goke-akintoye/" rel="author">Goke Akintoye</a></h3></div></div></div><nav class="content__nav"><div class="wrapper"><div class="content__nav-inner"><div class="content__nav-prev"><a href="https://mrkintoye.name.ng/frankenphp-2.html" class="content__nav-link" rel="prev"><div><span>Previous</span> FrankenPHP</div></a></div></div></div></nav></footer></article><div class="content__comments"><div class="entry-wrapper"><div class="comments"><div class="comments-wrapper"><h2>Comments</h2><div class="fb-comments" data-href="https://mrkintoye.name.ng/understanding-token-abilities-and-token-ability-checks-in-laravel-sanctum.html" data-width="100%" data-colorscheme="light" data-lazy="true" data-order-by="reverse_time" data-numposts="5"></div><noscript>Please enable JS to use the comments form.</noscript></div></div><div id="fb-root"></div><script type="text/javascript" async defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0">nonce="n4mWU9e7"</script></div></div></main><footer class="footer footer--glued"><div class="wrapper"><div class="footer__copyright"><p>Copyright © 2022-<span style="margin-left: 15px;">Adegoke Akintoye <strong>adexymeATgmailDOTcom</strong> +2348134684026</span></p></div><button id="backToTop" class="footer__bttop" aria-label="Back to top" title="Back to top"><svg width="20" height="20"><use xlink:href="https://mrkintoye.name.ng/assets/svg/svg-map.svg#toparrow"/></svg></button></div></footer><script defer="defer" src="https://mrkintoye.name.ng/assets/js/scripts.min.js?v=ffcbea6c02c8178d10092962b235a5b0"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.top'};</script><script>var images = document.querySelectorAll('img[loading]');
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script>w3.includeHTML(whenIncludeDone);
+function whenIncludeDone(){
+    
+    var cnt = 10000;
+    w3.slideshow(".headerADsX",cnt);
+    console.log(".headerADsX");
+    w3.slideshow(".headerAD",cnt);
+    console.log(".headerAD");
+    w3.slideshow(".headerAD1",cnt);
+    console.log(".headerAD1");
+    w3.slideshow(".headerAD2",cnt);
+    console.log(".headerAD2");
+    w3.slideshow(".headerAD3",cnt);
+    console.log(".headerAD3");
+    w3.slideshow(".headerAD4",cnt);
+    console.log(".headerAD4");
+    w3.slideshow(".headerAD5",cnt);
+    console.log(".headerAD5");
+    w3.slideshow(".headerAD6",cnt);
+    console.log(".headerAD6");
+    w3.show('.HAD');
+    }</script><script defer="defer" src="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/prism.js"></script><script defer="defer" src="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/prism-line-numbers.min.js"></script><script defer="defer" src="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/clipboard.min.js"></script><script defer="defer" src="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/prism-copy-to-clipboard.min.js"></script><script defer="defer" src="https://mrkintoye.name.ng/media/plugins/syntaxHighlighter/prism-autolinker.min.js"></script><div class="pcb" data-behaviour="badge" data-behaviour-link="#cookie-settings" data-revision="1" data-config-ttl="90" data-debug-mode="false"><div role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-title" aria-describedby="pcb-txt" class="pcb__banner"><div class="pcb__inner"><div id="pcb-title" role="heading" aria-level="2" class="pcb__title">This website uses cookies</div><div id="pcb-txt" class="pcb__txt">Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></div><div class="pcb__buttons"><button type="button" class="pcb__btn pcb__btn--link pcb__btn--configure" aria-haspopup="dialog">Manage preferences</button> <button type="button" class="pcb__btn pcb__btn--reject">Reject</button> <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button></div></div></div><div class="pcb__popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-popup-title"><div class="pcb__popup__wrapper"><div class="pcb__inner pcb__popup__inner"><div class="pcb__popup__heading"><div id="pcb-popup-title" role="heading" aria-level="2" class="pcb__title">Cookie settings</div><button class="pcb__popup__close" aria-label="Close"></button></div><div class="pcb__popup__content"><div class="pcb__txt pcb__popup__txt">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies. <a href="#not-specified">More details...</a></div><ul class="pcb__groups"><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Required</summary></details><div class="pcb__popup__switch is-checked"><input type="checkbox" data-group-name="" id="pcb-group-0" checked="checked"> <label for="pcb-group-0">Required</label></div></li></ul></div><div class="pcb__buttons pcb__popup__buttons"><button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button> <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button> <button type="button" class="pcb__btn pcb__btn--save">Save settings</button></div></div></div></div><div class="pcb__overlay" aria-hidden="true"></div><button class="pcb__badge" aria-label="Cookie Policy" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 23 23" fill="currentColor"><path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z"/></svg></button></div><script>(function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && (!cbConfig.initialLsState || cbConfig.initialLsState.indexOf(allowedGroup) === -1)) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);</script></body></html>
